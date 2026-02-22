@@ -31,8 +31,8 @@ const item = {
 
 const FeaturesSection = () => {
   return (
-    <section id="features" className="py-24 relative">
-      <div className="container mx-auto px-6">
+    <section id="features" className="py-24 relative grain">
+      <div className="container mx-auto px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -41,8 +41,7 @@ const FeaturesSection = () => {
           className="text-center mb-16"
         >
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-4">
-            Everything you need to{" "}
-            <span className="gradient-text">ship better code</span>
+            Everything you need to ship better code
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
             A comprehensive AI toolkit built into your editor, designed for individual developers and teams.
@@ -62,8 +61,8 @@ const FeaturesSection = () => {
               variants={item}
               className="glass-card gradient-border p-6 group hover:scale-[1.02] transition-transform duration-300 cursor-default"
             >
-              <div className="gradient-bg rounded-xl p-2.5 w-fit mb-4">
-                <f.icon className="h-5 w-5 text-primary-foreground" />
+              <div className="bg-primary/10 rounded-xl p-2.5 w-fit mb-4">
+                <f.icon className="h-5 w-5 text-primary" />
               </div>
               <h3 className="font-semibold text-foreground mb-1.5">{f.title}</h3>
               <p className="text-sm text-muted-foreground leading-relaxed">{f.desc}</p>

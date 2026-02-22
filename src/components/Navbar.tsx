@@ -49,7 +49,7 @@ const Navbar = () => {
     >
       <div className="container mx-auto flex items-center justify-between px-6">
         <a href="#" className="flex items-center gap-2 group">
-          <div className="gradient-bg rounded-lg p-1.5">
+          <div className="bg-primary rounded-lg p-1.5">
             <Zap className="h-5 w-5 text-primary-foreground" />
           </div>
           <span className="text-xl font-bold tracking-tight text-foreground">Jato</span>
@@ -86,7 +86,7 @@ const Navbar = () => {
             </motion.div>
           </button>
           <a href="#pricing">
-            <Button className="gradient-bg text-primary-foreground border-0 hover:opacity-90 transition-opacity font-semibold px-5">
+            <Button className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold px-5">
               Get Started Free
             </Button>
           </a>
@@ -124,7 +124,7 @@ const Navbar = () => {
               {isDark ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
             </button>
             <a href="#pricing" className="flex-1">
-              <Button className="w-full gradient-bg text-primary-foreground border-0">Get Started Free</Button>
+              <Button className="w-full bg-primary text-primary-foreground">Get Started Free</Button>
             </a>
           </div>
         </motion.div>

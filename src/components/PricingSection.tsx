@@ -41,7 +41,7 @@ const PricingSection = () => {
           className="text-center mb-16"
         >
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-4">
-            Simple, <span className="gradient-text">transparent pricing</span>
+            Simple, transparent pricing
           </h2>
           <p className="text-muted-foreground text-lg max-w-xl mx-auto">
             Start free. Upgrade when you're ready to unlock the full power of Jato.
@@ -56,10 +56,10 @@ const PricingSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.15 }}
-              className={`glass-card p-8 relative ${plan.highlighted ? "gradient-border glow" : ""}`}
+              className={`glass-card p-8 relative ${plan.highlighted ? "gradient-border ring-1 ring-primary/20" : ""}`}
             >
               {plan.badge && (
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2 gradient-bg text-primary-foreground text-xs font-semibold px-4 py-1 rounded-full">
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground text-xs font-semibold px-4 py-1 rounded-full">
                   {plan.badge}
                 </div>
               )}
@@ -79,7 +79,7 @@ const PricingSection = () => {
               <Button
                 className={`w-full font-semibold ${
                   plan.highlighted
-                    ? "gradient-bg text-primary-foreground border-0 hover:opacity-90"
+                    ? "bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg shadow-primary/20"
                     : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
                 }`}
               >

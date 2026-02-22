@@ -19,7 +19,7 @@ const HowItWorks = () => {
           className="text-center mb-16"
         >
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-4">
-            Get started in <span className="gradient-text">three steps</span>
+            Get started in three steps
           </h2>
           <p className="text-muted-foreground text-lg max-w-xl mx-auto">
             From install to your first AI-powered code review in under two minutes.
@@ -27,8 +27,7 @@ const HowItWorks = () => {
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto relative">
-          {/* Connecting line */}
-          <div className="hidden md:block absolute top-16 left-[20%] right-[20%] h-px bg-gradient-to-r from-primary/40 via-accent/40 to-primary/40" />
+          <div className="hidden md:block absolute top-16 left-[20%] right-[20%] h-px bg-border" />
 
           {steps.map((step, i) => (
             <motion.div
@@ -39,7 +38,7 @@ const HowItWorks = () => {
               transition={{ duration: 0.5, delay: i * 0.15 }}
               className="glass-card p-8 text-center relative"
             >
-              <div className="gradient-bg w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-5 text-primary-foreground font-bold font-mono text-sm">
+              <div className="bg-primary text-primary-foreground w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-5 font-bold font-mono text-sm">
                 {step.num}
               </div>
               <step.icon className="h-8 w-8 mx-auto mb-4 text-primary" />

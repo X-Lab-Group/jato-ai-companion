@@ -4,25 +4,25 @@
 
 @layer base {
   :root {
-    --background: 240 20% 95%;
-    --foreground: 240 25% 10%;
+    --background: 240 20% 97%;
+    --foreground: 220 20% 12%;
     --card: 0 0% 100%;
-    --card-foreground: 240 25% 10%;
+    --card-foreground: 220 20% 12%;
     --popover: 0 0% 100%;
-    --popover-foreground: 240 25% 10%;
-    --primary: 217 91% 60%;
+    --popover-foreground: 220 20% 12%;
+    --primary: 217 91% 55%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 240 20% 92%;
-    --secondary-foreground: 240 25% 10%;
-    --muted: 240 15% 90%;
-    --muted-foreground: 240 10% 45%;
-    --accent: 258 90% 66%;
+    --secondary: 220 14% 92%;
+    --secondary-foreground: 220 20% 12%;
+    --muted: 220 12% 90%;
+    --muted-foreground: 220 10% 45%;
+    --accent: 200 70% 50%;
     --accent-foreground: 0 0% 100%;
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
-    --border: 240 10% 85%;
-    --input: 240 10% 85%;
-    --ring: 217 91% 60%;
+    --border: 220 13% 87%;
+    --input: 220 13% 87%;
+    --ring: 217 91% 55%;
     --radius: 0.75rem;
     --success: 160 84% 39%;
 
@@ -37,34 +37,34 @@
   }
 
   .dark {
-    --background: 240 25% 5%;
-    --foreground: 0 0% 95%;
-    --card: 240 27% 14%;
-    --card-foreground: 0 0% 95%;
-    --popover: 240 27% 14%;
-    --popover-foreground: 0 0% 95%;
+    --background: 230 20% 6%;
+    --foreground: 220 15% 90%;
+    --card: 230 18% 11%;
+    --card-foreground: 220 15% 90%;
+    --popover: 230 18% 11%;
+    --popover-foreground: 220 15% 90%;
     --primary: 217 91% 60%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 240 20% 18%;
-    --secondary-foreground: 0 0% 90%;
-    --muted: 240 15% 20%;
-    --muted-foreground: 240 10% 60%;
-    --accent: 258 90% 66%;
+    --secondary: 225 15% 16%;
+    --secondary-foreground: 220 15% 85%;
+    --muted: 225 12% 18%;
+    --muted-foreground: 220 10% 55%;
+    --accent: 200 70% 50%;
     --accent-foreground: 0 0% 100%;
     --destructive: 0 62% 30%;
     --destructive-foreground: 0 0% 95%;
-    --border: 240 15% 20%;
-    --input: 240 15% 20%;
+    --border: 225 12% 18%;
+    --input: 225 12% 18%;
     --ring: 217 91% 60%;
     --success: 160 84% 39%;
 
-    --sidebar-background: 240 25% 8%;
-    --sidebar-foreground: 240 5% 90%;
+    --sidebar-background: 230 20% 8%;
+    --sidebar-foreground: 220 10% 85%;
     --sidebar-primary: 217 91% 60%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 15% 15%;
-    --sidebar-accent-foreground: 240 5% 90%;
-    --sidebar-border: 240 15% 20%;
+    --sidebar-accent: 225 12% 14%;
+    --sidebar-accent-foreground: 220 10% 85%;
+    --sidebar-border: 225 12% 18%;
     --sidebar-ring: 217 91% 60%;
   }
 }
@@ -82,32 +82,43 @@
 }
 
 @layer utilities {
+  /* Noise grain overlay — apply to sections for texture */
+  .grain::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 200px 200px;
+    z-index: 1;
+  }
+
   .glass {
-    @apply backdrop-blur-xl border border-white/10 shadow-xl;
+    @apply backdrop-blur-xl border shadow-xl;
     background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.08);
   }
-  .dark .glass {
-    background: rgba(255, 255, 255, 0.05);
-  }
-  :root .glass {
-    background: rgba(255, 255, 255, 0.7);
-  }
-  .dark .glass {
-    background: rgba(255, 255, 255, 0.05);
+  :root:not(.dark) .glass {
+    background: rgba(255, 255, 255, 0.65);
+    border-color: rgba(0, 0, 0, 0.06);
   }
 
   .glass-card {
-    @apply backdrop-blur-xl border border-white/10 rounded-2xl shadow-xl;
-    background: rgba(255, 255, 255, 0.05);
+    @apply backdrop-blur-xl border rounded-2xl shadow-lg;
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(255, 255, 255, 0.07);
   }
   :root:not(.dark) .glass-card {
-    background: rgba(255, 255, 255, 0.7);
-    border-color: rgba(0, 0, 0, 0.08);
+    background: rgba(255, 255, 255, 0.65);
+    border-color: rgba(0, 0, 0, 0.06);
+    box-shadow: 0 4px 24px -4px rgba(0, 0, 0, 0.06);
   }
 
   .gradient-text {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, hsl(217 91% 60%), hsl(258 90% 66%), hsl(330 81% 60%));
+    background-image: linear-gradient(135deg, hsl(217 91% 60%), hsl(200 70% 50%));
   }
 
   .gradient-border {
@@ -119,7 +130,7 @@
     inset: 0;
     border-radius: inherit;
     padding: 1px;
-    background: linear-gradient(135deg, hsl(217 91% 60%), hsl(258 90% 66%), hsl(330 81% 60%));
+    background: linear-gradient(135deg, hsl(217 91% 60% / 0.5), hsl(200 70% 50% / 0.5));
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
@@ -133,14 +144,6 @@
   }
 
   .gradient-bg {
-    background: linear-gradient(135deg, hsl(217 91% 60%), hsl(258 90% 66%), hsl(330 81% 60%));
-  }
-
-  .glow {
-    box-shadow: 0 0 40px -10px hsl(217 91% 60% / 0.4);
-  }
-
-  .glow-accent {
-    box-shadow: 0 0 60px -15px hsl(258 90% 66% / 0.3);
+    background: linear-gradient(135deg, hsl(217 91% 60%), hsl(200 70% 50%));
   }
 }

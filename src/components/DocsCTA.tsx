@@ -13,7 +13,6 @@ const DocsCTA = () => {
           transition={{ duration: 0.6 }}
           className="glass-card p-12 md:p-16 text-center max-w-3xl mx-auto relative overflow-hidden"
         >
-          <div className="absolute inset-0 gradient-bg opacity-5" />
           <div className="relative z-10">
             <BookOpen className="h-12 w-12 text-primary mx-auto mb-6" />
             <h2 className="text-3xl font-bold tracking-tight mb-4 text-foreground">
@@ -25,7 +24,7 @@ const DocsCTA = () => {
             <a href="https://docs.jato.dev" target="_blank" rel="noopener noreferrer">
               <Button
                 size="lg"
-                className="gradient-bg text-primary-foreground border-0 hover:opacity-90 font-semibold px-8 py-6 text-base glow"
+                className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold px-8 py-6 text-base shadow-lg shadow-primary/20"
               >
                 Read the Docs
                 <ArrowRight className="ml-2 h-5 w-5" />

@@ -31,8 +31,8 @@ const faqs = [
 
 const FAQSection = () => {
   return (
-    <section className="py-24 relative">
-      <div className="container mx-auto px-6">
+    <section className="py-24 relative grain">
+      <div className="container mx-auto px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -41,7 +41,7 @@ const FAQSection = () => {
           className="text-center mb-16"
         >
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-4">
-            Frequently asked <span className="gradient-text">questions</span>
+            Frequently asked questions
           </h2>
         </motion.div>
 
