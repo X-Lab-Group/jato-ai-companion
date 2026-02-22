@@ -1,20 +1,42 @@
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import ParticleField from "@/components/ParticleField";
 import heroMockup from "@/assets/hero-mockup.jpg";
 
 const HeroSection = () => {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"],
+  });
+
+  const mockupY = useTransform(scrollYProgress, [0, 1], [0, 120]);
+  const mockupScale = useTransform(scrollYProgress, [0, 1], [1, 0.92]);
+  const mockupRotateX = useTransform(scrollYProgress, [0, 0.5], [0, 4]);
+  const textY = useTransform(scrollYProgress, [0, 1], [0, -60]);
+  const textOpacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
+
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-24 pb-20">
-      {/* Animated gradient orbs */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 -left-32 w-96 h-96 rounded-full bg-primary/20 blur-[120px] animate-pulse-glow" />
-        <div className="absolute bottom-1/4 -right-32 w-96 h-96 rounded-full bg-accent/20 blur-[120px] animate-pulse-glow [animation-delay:1.5s]" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-primary/5 blur-[100px]" />
-      </div>
+    <section
+      ref={sectionRef}
+      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-24 pb-20"
+    >
+      <ParticleField />
+
+      {/* Grid pattern overlay */}
+      <div
+        className="absolute inset-0 pointer-events-none opacity-[0.03]"
+        style={{
+          backgroundImage:
+            "linear-gradient(hsl(var(--foreground)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--foreground)) 1px, transparent 1px)",
+          backgroundSize: "60px 60px",
+        }}
+      />
 
       <div className="container mx-auto px-6 relative z-10">
-        <div className="max-w-4xl mx-auto text-center mb-16">
+        <motion.div style={{ y: textY, opacity: textOpacity }} className="max-w-4xl mx-auto text-center mb-16">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -33,7 +55,7 @@ const HeroSection = () => {
             className="text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.1] mb-6"
           >
             Your AI Coding Companion{" "}
-            <span className="gradient-text">That Learns With You</span>
+            <span className="text-primary">That Learns With You</span>
           </motion.h1>
 
           <motion.p
@@ -53,7 +75,7 @@ const HeroSection = () => {
           >
             <Button
               size="lg"
-              className="gradient-bg text-primary-foreground border-0 hover:opacity-90 transition-all font-semibold px-8 py-6 text-base glow"
+              className="bg-primary text-primary-foreground hover:bg-primary/90 transition-all font-semibold px-8 py-6 text-base shadow-lg shadow-primary/20"
             >
               <Download className="mr-2 h-5 w-5" />
               Install for VS Code
@@ -69,15 +91,16 @@ const HeroSection = () => {
               </Button>
             </a>
           </motion.div>
-        </div>
+        </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 60, scale: 0.95 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
+          style={{ y: mockupY, scale: mockupScale, rotateX: mockupRotateX }}
+          initial={{ opacity: 0, y: 60 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.7 }}
-          className="max-w-5xl mx-auto"
+          className="max-w-5xl mx-auto [perspective:1200px]"
         >
-          <div className="glass-card p-2 glow-accent">
+          <div className="glass-card p-2 shadow-2xl shadow-primary/10">
             <img
               src={heroMockup}
               alt="Jato AI coding assistant interface in VS Code"
